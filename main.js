@@ -1,7 +1,7 @@
 //Crear constante que este direccionada al framework de express
-const express = require('express');
+//const express = require('express');
 // Crear constante para la app que apunta al método express
-const app = express();
+//const app = express();
 
 const cars = {platenumber:'12',brand:'Chevrolet'}
 
