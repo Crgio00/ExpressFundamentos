@@ -4,13 +4,25 @@ const port = process.env.PORT || 3600
 
 //Middleboard(Funcion para tomar datos de un formulario)
 app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 
 app.get('/', (req,res)=>{
     res.sendFile(__dirname + '/views/employee.html')
 })
 
+app.get('/welcome/:fullName',(req, res)=>{
+    const name = req.params.fullName
+    res.send('Bienvenido '+ name)
+})
+
 app.post('/employee', (req, res)=>{
-    res.send(req.body)
+    const {idEmp, fullName} = req.body
+
+    if (idEmp !="111" || fullName!="Juan") {
+        res.redirect('/')
+    } else {
+        res.redirect(`/Welcome/${fullName}`)
+    }
 })
 
 app.listen(port, ()=>{
